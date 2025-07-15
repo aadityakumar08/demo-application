@@ -1,5 +1,9 @@
 # Realtime Dashboard
 
+![Java](https://img.shields.io/badge/Java-17%2B-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 A professional, full-featured Spring Boot application for managing personal productivity and analytics, including notes, tasks, metrics, reminders, and transactions. Built with security, extensibility, and modern best practices in mind.
 
 ---
@@ -99,6 +103,75 @@ The app will start on `http://localhost:8080`.
 
 ---
 
+## 🧩 Environment Variables
+
+| Variable                      | Description                        | Example Value                  |
+|-------------------------------|------------------------------------|-------------------------------|
+| `spring.datasource.url`       | PostgreSQL JDBC URL                | jdbc:postgresql://localhost:5432/dashboard_db |
+| `spring.datasource.username`  | Database username                  | postgres                      |
+| `spring.datasource.password`  | Database password                  | your_password                 |
+| `jwt.secret`                  | Secret key for JWT signing         | my-very-secret-key            |
+| `jwt.expirationMs`            | JWT expiration in milliseconds     | 86400000                      |
+
+---
+
+## 📚 API Documentation (Sample)
+
+### Register
+```
+POST /signup
+Content-Type: application/json
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "testpass"
+}
+```
+**Response:**
+```
+201 Created
+{
+  "message": "User registered successfully!"
+}
+```
+
+### Login
+```
+POST /api/login
+Content-Type: application/json
+{
+  "username": "testuser",
+  "password": "testpass"
+}
+```
+**Response:**
+```
+200 OK
+{
+  "token": "<jwt-token>"
+}
+```
+
+### Get Notes (Protected)
+```
+GET /api/notes
+Authorization: Bearer <jwt-token>
+```
+**Response:**
+```
+200 OK
+[
+  {
+    "id": 1,
+    "title": "My First Note",
+    "content": "This is a test note.",
+    "createdAt": "2024-07-15T12:00:00"
+  }
+]
+```
+
+---
+
 ## 📚 API Endpoints (Sample)
 
 | Resource      | Endpoint                        | Method | Description                |
@@ -121,12 +194,33 @@ The app will start on `http://localhost:8080`.
 4. Push to the branch (`git push origin feature/YourFeature`)
 5. Open a Pull Request
 
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for more details.
+
+---
+
+## 🤝 Code of Conduct
+
+Please read and follow our [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) to foster an open and welcoming community.
+
 ---
 
 ## ❓ Troubleshooting
 - **Database connection errors:** Ensure PostgreSQL is running and credentials in `application.properties` are correct.
 - **Port conflicts:** Make sure port 8080 is free or change it in `application.properties`.
 - **JWT errors:** Double-check the `jwt.secret` value in your properties file.
+
+---
+
+## ❓ FAQ
+
+**Q: How do I reset my password?**
+A: Password reset is not implemented in this demo. You can add this feature in the future.
+
+**Q: Can I use a different database?**
+A: Yes, update the datasource properties in `application.properties` for your preferred database.
+
+**Q: How do I add more fields to a model?**
+A: Update the corresponding entity in `src/main/java/com/example/realtimedashboard/model/` and run migrations if needed.
 
 ---
 
