@@ -28,6 +28,28 @@ Authentication is handled via JWT, ensuring secure access to all protected endpo
 
 ---
 
+## 🗂️ Folder Structure
+
+```
+realtime-dashboard/
+├── pom.xml
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/example/realtimedashboard/
+│       │       ├── controller/         # REST controllers (API endpoints)
+│       │       ├── model/              # JPA entities (data models)
+│       │       ├── repository/         # Spring Data JPA repositories
+│       │       ├── security/           # JWT and security configuration
+│       │       └── service/            # Business logic and user details service
+│       └── resources/
+│           └── application.properties  # Main configuration file
+├── target/                             # Build output (ignored by git)
+└── README.md
+```
+
+---
+
 ## 🛠️ Tech Stack
 - **Java 17+**
 - **Spring Boot**
@@ -40,13 +62,19 @@ Authentication is handled via JWT, ensuring secure access to all protected endpo
 
 ## ⚡ Getting Started
 
-### 1. Clone the Repository
+### 1. Prerequisites
+- Java 17 or higher
+- Maven
+- PostgreSQL (running and accessible)
+- Git
+
+### 2. Clone the Repository
 ```sh
 git clone https://github.com/aadityakumar08/demo-application.git
 cd demo-application
 ```
 
-### 2. Configure the Database
+### 3. Configure the Database
 Edit `src/main/resources/application.properties` with your PostgreSQL credentials:
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/dashboard_db
@@ -54,7 +82,7 @@ spring.datasource.username=postgres
 spring.datasource.password=your_password
 ```
 
-### 3. Build and Run
+### 4. Build and Run
 ```sh
 mvn clean install
 mvn spring-boot:run
@@ -95,6 +123,13 @@ The app will start on `http://localhost:8080`.
 
 ---
 
+## ❓ Troubleshooting
+- **Database connection errors:** Ensure PostgreSQL is running and credentials in `application.properties` are correct.
+- **Port conflicts:** Make sure port 8080 is free or change it in `application.properties`.
+- **JWT errors:** Double-check the `jwt.secret` value in your properties file.
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License.
@@ -104,4 +139,9 @@ This project is licensed under the MIT License.
 ## 🙏 Acknowledgements
 - Spring Boot & Spring Security teams
 - PostgreSQL community
-- [Your Name or Organization] 
+- [Your Name or Organization]
+
+---
+
+## 📬 Contact
+For questions, suggestions, or support, please open an issue or contact [aadityakumar08](https://github.com/aadityakumar08). 
