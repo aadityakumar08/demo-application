@@ -1,0 +1,19 @@
+# Maven target directory
+/target/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Exclude compiled class files
+*.class 
