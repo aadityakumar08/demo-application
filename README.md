@@ -32,25 +32,63 @@ Authentication is handled via JWT, ensuring secure access to all protected endpo
 
 ---
 
-## 🗂️ Folder Structure
+## 🗂️ Detailed Folder Structure
 
-```
+```plaintext
 realtime-dashboard/
-├── pom.xml
+├── pom.xml                          # Maven build configuration
+├── README.md                        # Project documentation
+├── CODE_OF_CONDUCT.md               # Code of conduct for contributors
+├── CONTRIBUTING.md                  # Contribution guidelines
 ├── src/
 │   └── main/
 │       ├── java/
-│       │   └── com/example/realtimedashboard/
-│       │       ├── controller/         # REST controllers (API endpoints)
-│       │       ├── model/              # JPA entities (data models)
-│       │       ├── repository/         # Spring Data JPA repositories
-│       │       ├── security/           # JWT and security configuration
-│       │       └── service/            # Business logic and user details service
+│       │   └── com/
+│       │       └── example/
+│       │           └── realtimedashboard/
+│       │               ├── RealtimeDashboardApplication.java   # Main Spring Boot application entry point
+│       │               ├── controller/                        # REST API controllers
+│       │               │   ├── AuthController.java            # Authentication endpoints (login, signup)
+│       │               │   ├── DashboardController.java       # Dashboard summary endpoints
+│       │               │   ├── MetricController.java          # Metrics CRUD endpoints
+│       │               │   ├── NoteController.java            # Notes CRUD endpoints
+│       │               │   ├── ReminderController.java        # Reminders CRUD endpoints
+│       │               │   ├── TaskController.java            # Tasks CRUD endpoints
+│       │               │   └── TransactionController.java     # Transactions CRUD endpoints
+│       │               ├── model/                             # JPA entity models
+│       │               │   ├── Metric.java
+│       │               │   ├── Note.java
+│       │               │   ├── Reminder.java
+│       │               │   ├── Task.java
+│       │               │   ├── Transaction.java
+│       │               │   └── User.java
+│       │               ├── repository/                        # Spring Data JPA repositories
+│       │               │   ├── MetricRepository.java
+│       │               │   ├── NoteRepository.java
+│       │               │   ├── ReminderRepository.java
+│       │               │   ├── TaskRepository.java
+│       │               │   ├── TransactionRepository.java
+│       │               │   └── UserRepository.java
+│       │               ├── security/                          # Security and JWT configuration
+│       │               │   ├── JwtFilter.java                 # JWT authentication filter
+│       │               │   ├── JwtUtil.java                   # JWT utility methods
+│       │               │   └── SecurityConfig.java            # Spring Security configuration
+│       │               └── service/                           # Business logic and user details service
+│       │                   └── CustomerUserDetailsService.java
 │       └── resources/
-│           └── application.properties  # Main configuration file
-├── target/                             # Build output (ignored by git)
-└── README.md
+│           └── application.properties    # Main application configuration (DB, JWT, etc.)
+└── target/                               # Compiled output and build artifacts (ignored by git)
 ```
+
+### Directory/Component Descriptions
+
+- **controller/**: Contains REST controllers that define API endpoints for each resource (notes, tasks, metrics, reminders, transactions, authentication, dashboard).
+- **model/**: JPA entity classes representing the database tables.
+- **repository/**: Spring Data JPA repositories for database CRUD operations.
+- **security/**: All security-related code, including JWT utilities, filters, and Spring Security configuration.
+- **service/**: Business logic and user details service for authentication.
+- **resources/**: Application configuration files (e.g., database connection, JWT secret).
+- **target/**: Maven build output (should be ignored in version control).
 
 ---
 
